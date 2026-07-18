@@ -1,0 +1,6 @@
+{
+  "name": "Chincholi Wines",
+  "description": "Premium Wine & Spirits Shop on Malad Link Road, Malad West, Mumbai. Curated collection of fine wines, aged single malts, craft beers, and luxury spirits.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
