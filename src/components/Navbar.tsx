@@ -80,9 +80,9 @@ export default function Navbar() {
                 <Wine className="w-5 h-5 text-[#5c0620] group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div>
-                <h1 className="font-serif text-xl tracking-wider text-stone-900 font-extrabold leading-none uppercase">
+                <p className="font-serif text-xl tracking-wider text-stone-900 font-extrabold leading-none uppercase">
                   Chincholi
-                </h1>
+                </p>
                 <p className="text-[10px] tracking-[0.3em] uppercase text-[#b99d6d] font-bold mt-0.5 font-sans">
                   Wines
                 </p>

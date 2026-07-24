@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Award, Flame, Gem, ShieldCheck, Wine, MapPin, ArrowDown, Phone, Handshake } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Collections from './components/Collections';
+import FeaturedProducts from './components/FeaturedProducts';
 import Services from './components/Services';
 import ReviewSlider from './components/ReviewSlider';
 import Gallery from './components/Gallery';
@@ -55,17 +56,17 @@ export default function App() {
               </span>
             </motion.div>
 
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight"
             >
-              Elevate Your <br />
-              <span className="text-[#b99d6d]">
-                Spirits & Vintages
+              Premium Wine & Whisky Shop <br />
+              in <span className="text-[#b99d6d]">
+                Malad West, Mumbai
               </span>
-            </motion.h2>
+            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -234,6 +235,9 @@ export default function App() {
 
       {/* Curated Collections Section */}
       <Collections />
+
+      {/* Featured Products Section */}
+      <FeaturedProducts />
 
       {/* Services Section */}
       <Services />

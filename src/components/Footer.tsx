@@ -58,6 +58,7 @@ export default function Footer() {
               {[
                 { label: 'Home', id: 'home' },
                 { label: 'Collections', id: 'collections' },
+                { label: 'Featured Picks', id: 'featured-products' },
                 { label: 'Our Story', id: 'about' },
                 { label: 'Services', id: 'services' },
               ].map((link) => (

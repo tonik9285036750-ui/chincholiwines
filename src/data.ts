@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     description: 'A harmonious blend of American and European sherry oak casks. Complex aromas of vanilla, honey, and fresh ginger.',
     origin: 'Speyside, Scotland',
     priceRange: '₹₹₹₹',
-    image: 'https://images.unsplash.com/photo-1508253730747-e833c5d47576?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=400&auto=format&fit=crop',
     abv: '40%',
     isPopular: true
   },
@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
     description: 'Matured in sherry, bourbon, and new oak casks, then married in our unique Solera Vat. Silky smooth with notes of warm spice and honey.',
     origin: 'Speyside, Scotland',
     priceRange: '₹₹₹₹',
-    image: 'https://images.unsplash.com/photo-1599390809300-c01e3b6fbf34?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=400&auto=format&fit=crop',
     abv: '40%',
     isPopular: true
   },
@@ -60,7 +60,7 @@ export const PRODUCTS: Product[] = [
     description: 'Crafted from Indian and peated Scottish barley. Rich oak, fresh fruit, and a subtle wisp of peat smoke make this a world-class award-winner.',
     origin: 'Bengaluru, India',
     priceRange: '₹₹₹',
-    image: 'https://images.unsplash.com/photo-1569529465841-dfedd6d5843a?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=400&auto=format&fit=crop',
     abv: '50%'
   },
   {
@@ -82,7 +82,7 @@ export const PRODUCTS: Product[] = [
     description: 'An iconic luxury champagne of incredible depth and precision. Vivid mineral tension balanced with hints of toasted brioche and white peach.',
     origin: 'Champagne, France',
     priceRange: '₹₹₹₹',
-    image: 'https://images.unsplash.com/photo-1594498653385-d5172b532c00?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470158499416-75be9aa0c4db?q=80&w=400&auto=format&fit=crop',
     abv: '12.5%',
     isPopular: true
   },
@@ -105,7 +105,7 @@ export const PRODUCTS: Product[] = [
     description: 'The world\'s most popular luxury rosé. Strikingly pale pink, bone dry, and highly refreshing with delicate notes of red berries and grapefruit.',
     origin: 'Provence, France',
     priceRange: '₹₹',
-    image: 'https://images.unsplash.com/photo-1553072768-60d3d39ed0df?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1547595628-c61a29f496f0?q=80&w=400&auto=format&fit=crop',
     abv: '13%'
   },
   {
@@ -208,7 +208,7 @@ export const PRODUCTS: Product[] = [
     description: 'An exceptional dark sipping rum matured in small oak casks for up to twelve years. Luxuriously sweet with maple syrup, orange peel, and licorice.',
     origin: 'Lara, Venezuela',
     priceRange: '₹₹',
-    image: 'https://images.unsplash.com/photo-1514218247612-f1daaeef157a?q=80&w=400&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=400&auto=format&fit=crop',
     abv: '40%'
   }
 ];
