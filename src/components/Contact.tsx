@@ -92,10 +92,10 @@ export default function Contact() {
                   <div>
                     <h4 className="text-sm font-bold text-stone-800">Direct Contact</h4>
                     <a
-                      href="tel:+918879615331"
+                      href="tel:+919285036750"
                       className="text-xs text-[#5c0620] hover:text-[#77102e] font-extrabold transition-colors mt-1 block"
                     >
-                      +91 8879615331
+                      +91 9285036750
                     </a>
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function Contact() {
               </p>
               <div className="flex gap-3">
                 <a
-                  href="https://wa.me/918879615331"
+                  href="https://wa.me/919285036750"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl border border-stone-200 bg-stone-50 hover:bg-stone-100/50 hover:border-emerald-500/30 text-stone-500 hover:text-emerald-500 flex items-center justify-center transition-all duration-300"
