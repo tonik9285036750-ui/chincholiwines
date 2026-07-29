@@ -106,10 +106,10 @@ export default function Footer() {
               Malad West, Mumbai-400064, Maharashtra
             </p>
             <a
-              href="tel:+919285036750"
+              href="tel:+919009571183"
               className="inline-block text-xs font-extrabold text-[#5c0620] hover:text-[#77102e] transition-colors"
             >
-              Ph: +91 9285036750
+              Ph: +91 9009571183
             </a>
           </div>
         </div>

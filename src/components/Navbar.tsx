@@ -118,7 +118,7 @@ export default function Navbar() {
               {/* CTAs */}
               <div className="h-4 w-[1px] bg-stone-200" />
               <a
-                href="https://wa.me/919285036750?text=Hi%20Chincholi%20Wines!%20I%20have%20an%20inquiry%20about%20your%20premium%20collection."
+                href="https://wa.me/919009571183?text=Hi%20Chincholi%20Wines!%20I%20have%20an%20inquiry%20about%20your%20premium%20collection."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/25 text-emerald-700 font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm"
@@ -208,7 +208,7 @@ export default function Navbar() {
                   Consuming liquor is injurious to health. Play safe, drink responsibly.
                 </p>
                 <a
-                  href="https://wa.me/919285036750?text=Hi%20Chincholi%20Wines!%20I%20have%20an%20inquiry%20about%20your%20premium%20collection."
+                  href="https://wa.me/919009571183?text=Hi%20Chincholi%20Wines!%20I%20have%20an%20inquiry%20about%20your%20premium%20collection."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-[#5c0620] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#77102e] transition-colors duration-300 shadow-md"
