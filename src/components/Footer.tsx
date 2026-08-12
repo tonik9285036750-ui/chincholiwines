@@ -1,7 +1,16 @@
 import { Wine, AlertTriangle, ArrowUp } from 'lucide-react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollTo = (id: string) => {
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -16,6 +25,15 @@ export default function Footer() {
       });
     }
   };
+
+  const exploreLinks = [
+    { label: 'Order Wines Online', path: '/order-wines-online' },
+    { label: 'Hotel Booking', path: '/hotel-booking' },
+    { label: 'Wine Shop', path: '/wine-shop' },
+    { label: 'Home Delivery', path: '/home-delivery' },
+    { label: 'VIP Lounge Booking', path: '/vip-lounge-booking' },
+    { label: 'Event Venues', path: '/event-venues' },
+  ];
 
   return (
     <footer className="relative bg-[#FAF8F5] pt-20 pb-10 border-t border-stone-200 overflow-hidden">
@@ -32,7 +50,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           {/* Brand Info */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-9 h-10 rounded-xl bg-[#5c0620]/5 border border-[#5c0620]/20 flex items-center justify-center">
                 <Wine className="w-5 h-5 text-[#5c0620]" />
@@ -58,9 +76,10 @@ export default function Footer() {
               {[
                 { label: 'Home', id: 'home' },
                 { label: 'Collections', id: 'collections' },
-                { label: 'Featured Picks', id: 'featured-products' },
                 { label: 'Our Story', id: 'about' },
                 { label: 'Services', id: 'services' },
+                { label: 'Visual Gallery', id: 'gallery' },
+                { label: 'Patron Reviews', id: 'testimonials' },
               ].map((link) => (
                 <li key={link.id}>
                   <button
@@ -74,22 +93,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Support links */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 font-sans">Connect</h4>
+          {/* Explore Links */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-stone-900 font-sans">Explore</h4>
             <ul className="space-y-2.5">
-              {[
-                { label: 'Visual Gallery', id: 'gallery' },
-                { label: 'Patron Reviews', id: 'testimonials' },
-                { label: 'Store Contact', id: 'contact' },
-              ].map((link) => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => scrollTo(link.id)}
-                    className="text-xs text-stone-600 hover:text-[#5c0620] hover:pl-1 transition-all duration-300 font-sans font-bold uppercase tracking-wider cursor-pointer"
+              {exploreLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="text-xs text-stone-600 hover:text-[#5c0620] hover:pl-1 transition-all duration-300 font-sans font-bold uppercase tracking-wider cursor-pointer block"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

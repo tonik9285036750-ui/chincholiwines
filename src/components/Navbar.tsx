@@ -1,20 +1,29 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone, Wine } from 'lucide-react';
+import { Menu, X, Phone, Wine, ChevronDown } from 'lucide-react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isExploreOpen, setIsExploreOpen] = useState(false);
+  const [isMobileExploreOpen, setIsMobileExploreOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
+      if (location.pathname !== '/') return;
+
       // Track active section on scroll
       const sections = ['home', 'collections', 'about', 'services', 'gallery', 'testimonials', 'contact'];
       const scrollPosition = window.scrollY + 120;
 
+      let found = false;
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -22,15 +31,34 @@ export default function Navbar() {
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(section);
+            found = true;
             break;
           }
         }
       }
+      if (!found && window.scrollY < 100) setActiveSection('home');
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Also handle scroll on mount if hash is present
+    if (location.pathname === '/' && location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location]);
 
   const navItems = [
     { label: 'Home', target: 'home' },
@@ -42,8 +70,23 @@ export default function Navbar() {
     { label: 'Contact', target: 'contact' },
   ];
 
+  const exploreLinks = [
+    { label: 'Order Wines Online', path: '/order-wines-online' },
+    { label: 'Hotel Booking', path: '/hotel-booking' },
+    { label: 'Wine Shop', path: '/wine-shop' },
+    { label: 'Home Delivery', path: '/home-delivery' },
+    { label: 'VIP Lounge Booking', path: '/vip-lounge-booking' },
+    { label: 'Event Venues', path: '/event-venues' },
+  ];
+
   const scrollTo = (id: string) => {
     setIsMobileMenuOpen(false);
+    
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -63,8 +106,8 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-white/80 backdrop-blur-xl border-b border-stone-200/60 py-3 shadow-sm'
+          isScrolled || location.pathname !== '/'
+            ? 'bg-white/95 backdrop-blur-xl border-b border-stone-200/60 py-3 shadow-sm'
             : 'bg-transparent py-5 border-b border-transparent'
         }`}
       >
@@ -97,13 +140,13 @@ export default function Navbar() {
                     <button
                       onClick={() => scrollTo(item.target)}
                       className={`relative py-1 text-xs font-sans font-bold uppercase tracking-wider transition-colors duration-300 cursor-pointer hover:text-[#5c0620] ${
-                        activeSection === item.target
+                        activeSection === item.target && location.pathname === '/'
                           ? 'text-[#5c0620]'
                           : 'text-stone-500'
                       }`}
                     >
                       {item.label}
-                      {activeSection === item.target && (
+                      {activeSection === item.target && location.pathname === '/' && (
                         <motion.span
                           layoutId="activeNavLine"
                           className="absolute bottom-0 left-0 w-full h-[2px] bg-[#5c0620]"
@@ -113,6 +156,38 @@ export default function Navbar() {
                     </button>
                   </li>
                 ))}
+                
+                {/* Explore Dropdown */}
+                <li 
+                  className="relative"
+                  onMouseEnter={() => setIsExploreOpen(true)}
+                  onMouseLeave={() => setIsExploreOpen(false)}
+                >
+                  <button className="flex items-center gap-1 py-1 text-xs font-sans font-bold uppercase tracking-wider transition-colors duration-300 cursor-pointer text-stone-500 hover:text-[#5c0620]">
+                    Explore <ChevronDown className="w-3 h-3" />
+                  </button>
+                  <AnimatePresence>
+                    {isExploreOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white border border-stone-200 rounded-xl shadow-xl overflow-hidden py-2 z-50"
+                      >
+                        {exploreLinks.map((link) => (
+                          <Link
+                            key={link.path}
+                            to={link.path}
+                            className="block px-4 py-2.5 text-xs font-bold text-stone-700 hover:bg-stone-50 hover:text-[#5c0620] transition-colors"
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
               </ul>
 
               {/* CTAs */}
@@ -160,7 +235,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-[#FAF8F5] border-l border-stone-200/80 z-50 p-8 flex flex-col justify-between shadow-2xl lg:hidden"
+              className="fixed top-0 right-0 h-full w-[280px] bg-[#FAF8F5] border-l border-stone-200/80 z-50 p-8 flex flex-col justify-between shadow-2xl lg:hidden overflow-y-auto"
             >
               <div className="space-y-8">
                 {/* Logo and close btn */}
@@ -189,7 +264,7 @@ export default function Navbar() {
                       <button
                         onClick={() => scrollTo(item.target)}
                         className={`w-full text-left py-2 font-sans font-bold text-xs uppercase tracking-wider transition-all duration-300 ${
-                          activeSection === item.target
+                          activeSection === item.target && location.pathname === '/'
                             ? 'text-[#5c0620] pl-2 border-l-2 border-[#5c0620]'
                             : 'text-stone-500 hover:text-stone-900'
                         }`}
@@ -198,11 +273,48 @@ export default function Navbar() {
                       </button>
                     </motion.li>
                   ))}
+                  
+                  {/* Mobile Explore Section */}
+                  <motion.li
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navItems.length * 0.05 }}
+                  >
+                    <button
+                      onClick={() => setIsMobileExploreOpen(!isMobileExploreOpen)}
+                      className="flex items-center justify-between w-full text-left py-2 font-sans font-bold text-xs uppercase tracking-wider text-stone-500 hover:text-stone-900 transition-all duration-300"
+                    >
+                      Explore
+                      <ChevronDown className={`w-4 h-4 transition-transform ${isMobileExploreOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {isMobileExploreOpen && (
+                        <motion.ul
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="pl-4 border-l border-stone-200 mt-2 space-y-3 overflow-hidden"
+                        >
+                          {exploreLinks.map((link) => (
+                            <li key={link.path}>
+                              <Link
+                                to={link.path}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="block text-xs font-bold text-stone-600 hover:text-[#5c0620]"
+                              >
+                                {link.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </motion.li>
                 </ul>
               </div>
 
               {/* Mobile CTA */}
-              <div className="space-y-4">
+              <div className="space-y-4 mt-8">
                 <div className="h-[1px] bg-stone-200" />
                 <p className="text-[10px] text-stone-500 font-sans text-center">
                   Consuming liquor is injurious to health. Play safe, drink responsibly.
