@@ -85,7 +85,7 @@ export default function App() {
               className="pt-4 flex flex-wrap gap-4 items-center"
             >
               <a
-                href="https://wa.me/919009571183?text=Hi%20Chincholi%20Wines!%20I%20have%20an%20inquiry%20about%20your%20premium%20collection."
+                href="https://wa.me/919424769902?text=Hi%20Chincholi%20Wines!%20I%20have%20an%20inquiry%20about%20your%20premium%20collection."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#5c0620] text-white font-bold uppercase tracking-wider text-xs hover:bg-[#77102e] transition-colors duration-300 shadow-sm cursor-pointer"
@@ -255,7 +255,7 @@ export default function App() {
       <Footer />
 
       <a
-        href="https://wa.me/919009571183?text=Hello%20Chincholi%20Team%2C%20I%20want%20to%20book%20something"
+        href="https://wa.me/919424769902?text=Hello%20Chincholi%20Team%2C%20I%20want%20to%20book%20something"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-4 right-4 md:bottom-6 md:right-6 flex items-center justify-center transition-all duration-200 hover:scale-[1.05]"
